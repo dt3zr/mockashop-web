@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+    <h1 th:text="${product.name}">product name</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/store/shopping-cart}" method="get">Shopping Cart</a></li>
+                <li><a href="#" th:href="@{/store/product-catalog}" method="get">Product Catalog</a></li>
+                <li><a href="#" th:href="@{/store/order}" method="get">My Orders</a></li>
+                <li><a href="#" th:href="@{/logout}" method="get">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="#" th:action="@{/store/shopping-cart}" th:object="${cartItem}" method="post">
+        <div>
+            <div th:text="${product.code}">Product Code</div>
+            <div th:text="${product.type}">Type</div>
+            <div th:text="${product.name}">Name</div>
+            <div th:text="${product.description}">Description</div>
+            <div th:text="${product.price}">Price</div>
+        </div>
+        <input type="hidden" th:field="*{productCode}" />
+        <button type="submit">Buy</button>
+    </form>
+</body>
+</html>

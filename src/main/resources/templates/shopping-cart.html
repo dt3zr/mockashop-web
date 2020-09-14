@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/store/shopping-cart}" method="get">Shopping Cart</a></li>
+                <li><a href="#" th:href="@{/store/product-catalog}" method="get">Product Catalog</a></li>
+                <li><a href="#" th:href="@{/store/order}" method="get">My Orders</a></li>
+                <li><a href="#" th:href="@{/logout}" method="get">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div th:if="${#strings.isEmpty(errorMessage)}">
+        <div th:each="shoppingCartItem : ${shoppingCartItems}">
+            <div th:text="${shoppingCartItem.productCode}">Product Code</div>
+            <div th:text="${shoppingCartItem.type}">Type</div>
+            <div th:text="${shoppingCartItem.name}">Name</div>
+            <div th:text="${shoppingCartItem.description}">Description</div>
+            <div th:text="${shoppingCartItem.quantity}">Quantity</div>
+            <div th:text="${shoppingCartItem.price}">Price</div>
+        </div>
+        <form action="#" th:action="@{/store/order}" method="post">
+            <button type="submit">Checkout</button>
+        </form>
+    </div>
+    <div th:if="${not #strings.isEmpty(errorMessage)}">
+        <div th:text="${errorMessage}">Error Message</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+</head>
+<body>
+    <h1>Product Administration</h1>
+    <form action="#" th:action="@{/admin/product/form}" th:object="${productForm}" method="post">
+        <div style="margin-top: 1rem;">
+            <label th:for="${#ids.next('code')}" style="display: inline-block; width: 8rem;">Product Code</label>
+            <input type="text" th:field="*{code}" style="width: 30%;" />
+            <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Product code error</span>
+        </div>
+        <div style="margin-top: 1rem;">
+            <label th:for="${#ids.next('name')}" style="display: inline-block; width: 8rem;">Name</label>
+            <input type="text" th:field="*{name}" style="width: 30%;" />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Product name error</span>
+        </div>
+        <div style="margin-top: 1rem;">
+            <label th:for="${#ids.next('description')}" style="display: inline-block; width: 8rem;">Description</label>
+            <input type="text" th:field="*{description}" style="width: 30%;" />
+            <span th:if="${#fields.hasErrors('code')}" th:errors="*{description}">Product description error</span>
+        </div>
+        <div style="margin-top: 1rem;">
+            <label th:for="${#ids.next('type')}" style="display: inline-block; width: 8rem;">Type</label>
+            <input type="text" th:field="*{type}" style="width: 30%;" />
+            <span th:if="${#fields.hasErrors('code')}" th:errors="*{type}">Product type error</span>
+        </div>
+        <div style="margin-top: 1rem;">
+            <label th:for="${#ids.next('price')}" style="display: inline-block; width: 8rem;">Unit Price</label>
+            <input type="number" step="any" th:field="*{price}" style="width: 30%;" />
+            <span th:if="${#fields.hasErrors('code')}" th:errors="*{price}">Product unit price error</span>
+        </div>
+        <button type="submit" style="margin-top: 1rem">Add</button>
+    </form>
+</body>
+</html>

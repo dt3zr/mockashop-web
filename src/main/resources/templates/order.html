@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+    <h1>Order</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" th:href="@{/store/shopping-cart}" method="get">Shopping Cart</a></li>
+                <li><a href="#" th:href="@{/store/product-catalog}" method="get">Product Catalog</a></li>
+                <li><a href="#" th:href="@{/store/order}" method="get">My Orders</a></li>
+                <li><a href="#" th:href="@{/logout}" method="get">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <div th:text="${order.status}">Order Status</div>
+        <div th:text="${order.total}">Order Total</div>
+        <div th:text="${order.transactionId}">Transaction Id</div>
+        <div th:text="${order.transactionDate}">Transaction Date</div>
+    </div>
+    <div th:each="orderItem : ${orderItems}">
+        <div th:text="${orderItem.productCode}">Product Code</div>
+        <div th:text="${orderItem.name}">Name</div>
+        <div th:text="${orderItem.description}">Description</div>
+        <div th:text="${orderItem.quantity}">Quantity</div>
+        <div th:text="${orderItem.price}">Price</div>
+    </div>
+</body>
+</html>
